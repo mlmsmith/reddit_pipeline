@@ -1,0 +1,18 @@
+config/config.conf
+# Ignore environment variables containing secrets
+airflow.env
+
+# Ignore logs and data directories
+logs/
+data/
+
+# Ignore compiled Python files
+__pycache__/
+
+# Ignore temporary Docker files
+docker-compose.override.yml
+*.bak
+*.tmp
+
+# Ignore Airflow database migrations
+airflow.db
