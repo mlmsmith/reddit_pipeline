@@ -1,27 +1,17 @@
+import configparser
+import os
 
-[database]
-database_host = localhost
-database_name = airflow_reddit
-database_port = 5432
-database_username = postgres
-database_password = postrgres
+parser = configparser.ConfigParser()
+parser.read(os.path.join(os.path.dirname(__file__), '../config/config.conf'))
 
-[file_paths]
-input_path = /opt/airflow/data/input
-output_path = /opt/airflow/data/output
+SECRET = parser.get('api_keys', 'reddit_secret_key')
+CLIENT_ID = parser.get('api_keys', 'reddit_cliend_id')
 
-[api_keys]
-reddit_secret_key = [SECRET KEY HERE]
-reddit_client_id = [CLIENT ID HERE]
+DATABASE_HOST = parser.get('database', 'database_host')
+DATABASE_NAME = parser.get('database', 'database_name')
+DATABASE_PORT = parser.get('database', 'database_port')
+DATABASE_USER = parser.get('database', 'database_username')
+DATABASE_PASSWORD = parser.get('database', 'database_password')
 
-[aws]
-aws_access_key_id = [aws access key id]
-aws_secret_access_key= [aws secret key]
-aws_session_token= [aws session token]
-aws_region = [aws region]
-aws_bucket_name = [s3 bucket name]
-
-[etl_settings]
-batch_size = 100
-error_handling = abort
-log_level = info
+INPUT_PATH = parser.get('file_paths', 'input_path')
+OUTPUT_PATH = parser.get('file_paths', 'output_path')
