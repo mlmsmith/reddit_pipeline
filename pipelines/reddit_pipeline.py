@@ -1,6 +1,8 @@
-def reddit_pipeline(file_name: str, subreddit: str, time_filter='day', limit:None):
+from etls.reddit_etl import connect_reddit
+from utils.constants import CLIENT_ID, SECRET
+def reddit_pipeline(file_name: str, subreddit: str, time_filter='day', limit=None):
     #connecting to Reddit instance
-    instance = reddit_connection(CLIENT_ID, SECRET, 'Airscholar agent')
-    #extraction
-    #transformation
+    instance = connect_reddit(CLIENT_ID, SECRET, 'Airscholar Agent')
+    #extraction =
+    transformation = extract_posts(instance, subreddit, time_filter, limit)
     #loading to csv
