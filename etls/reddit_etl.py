@@ -13,7 +13,7 @@ def connect_reddit(client_id, client_secret, user_agent) -> Reddit:
         print(e)
         sys.exit(1)
 
-def extract_post(reddit_instance: Reddit, subreddit: str, time_filter:str, limit=None):
+def extract_posts(reddit_instance: Reddit, subreddit: str, time_filter:str, limit=None):
     subreddit = reddit_instance.subreddit(subreddit)
     posts = subreddit.top(time_filter=time_filter, limit=limit)
 
