@@ -6,6 +6,8 @@ from airflow.operators.python import PythonOperator
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
+from pipelines.reddit_pipeline import reddit_pipeline
+
 default_args = {
     'owner': 'Michael',
     'start_date': datetime(2023, 10, 22)
@@ -30,5 +32,6 @@ extract = PythonOperator(
         'subreddit': 'dataengineering',
         'time_filter': 'day',
         'limit': 100
-    }
+    },
+    dag=dag
 )
