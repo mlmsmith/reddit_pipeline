@@ -35,3 +35,6 @@ def transform_data(post_df: pd.DataFrame):
     post_df['over_18'] = np.where((post_df['over_18'] == True), True, False)
     post_df['author'] = post_df['author'].astype(str)
     return post_df
+
+def load_data_to_csv(data: pd.DataFrame, path: str):
+    data.to_csv(path, index=False)
